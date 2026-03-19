@@ -1,0 +1,200 @@
+/* Import Space Grotesk Font */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+
+:root {
+    --bg-dark: #09090b;
+    --card-glass: rgba(24, 24, 27, 0.65);
+    --neon-cyan: #00f0ff;
+    --neon-purple: #8a2be2;
+    --neon-pink: #ff007f;
+    --text-main: #f4f4f5;
+    --text-muted: #a1a1aa;
+}
+
+/* 1. THE CANVAS FIX: Pins the animation to the deep background */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-color: var(--bg-dark);
+    pointer-events: none;
+}
+
+/* 2. THE CENTERING FIX: Locks the layout to the middle */
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-main);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* Centers Left/Right */
+}
+
+.container { 
+    width: 100%; 
+    max-width: 650px; 
+    margin: 6vh auto; /* Pushes it down slightly so it floats perfectly in the middle */
+}
+
+/* --- THE REST OF YOUR CYBER UI STYLING --- */
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShine 4s linear infinite;
+    margin-bottom: 40px;
+}
+
+@keyframes textShine { to { background-position: 200% center; } }
+
+h3 { font-size: 1.3rem; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px; }
+
+/* Frosted Glass Cards */
+.form-box {
+    background: var(--card-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 35px;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(0, 240, 255, 0.05);
+    margin-bottom: 40px;
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Glowing Inputs */
+input, select {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 18px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-main);
+    font-size: 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    transition: all 0.3s ease;
+}
+
+input::placeholder { color: var(--text-muted); }
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--neon-cyan);
+    background: rgba(0, 240, 255, 0.05);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.phone-input-group { display: flex; gap: 15px; margin-bottom: 18px; }
+.phone-input-group select { width: 35%; margin-bottom: 0; color: var(--neon-cyan); }
+.phone-input-group input { width: 65%; margin-bottom: 0; }
+.phone-input-group select option { background: var(--bg-dark); color: var(--text-main); }
+
+/* Animated Gradient Button */
+.add-btn {
+    background: linear-gradient(45deg, var(--neon-purple), var(--neon-cyan));
+    background-size: 200% 200%;
+    color: white;
+    border: none;
+    padding: 16px;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 240, 255, 0.3);
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.add-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 240, 255, 0.6);
+}
+
+/* Animated List Items */
+ul { padding: 0; }
+
+li {
+    background: var(--card-glass);
+    backdrop-filter: blur(10px);
+    margin-bottom: 15px;
+    padding: 20px 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideInRight 0.5s forwards;
+}
+
+@keyframes slideInRight {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+li:hover {
+    transform: translateY(-4px) scale(1.01) !important;
+    border-color: rgba(0, 240, 255, 0.4);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 240, 255, 0.15);
+}
+
+/* Neon Badges */
+.user-name { font-size: 1.3rem; font-weight: 700; display: block; margin-bottom: 8px; color: white;}
+.badge-teach { color: var(--neon-cyan); font-weight: 600; text-shadow: 0 0 5px rgba(0, 240, 255, 0.5);}
+.badge-learn { color: var(--neon-pink); font-weight: 600; text-shadow: 0 0 5px rgba(255, 0, 127, 0.5);}
+
+/* Action Buttons */
+.whatsapp-btn {
+    background: rgba(37, 211, 102, 0.1);
+    color: #25D366;
+    border: 1px solid rgba(37, 211, 102, 0.4);
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.2s;
+}
+
+.delete-btn {
+    background: rgba(255, 0, 60, 0.1);
+    color: #ff003c;
+    border: 1px solid rgba(255, 0, 60, 0.4);
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.whatsapp-btn:hover { background: #25D366; color: var(--bg-dark); box-shadow: 0 0 15px rgba(37, 211, 102, 0.5); transform: translateY(-2px);}
+.delete-btn:hover { background: #ff003c; color: white; box-shadow: 0 0 15px rgba(255, 0, 60, 0.5); transform: translateY(-2px);}

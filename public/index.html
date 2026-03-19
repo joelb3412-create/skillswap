@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap | Cyber</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="container">
+        <h1>✨ SkillSwap</h1>
+        
+        <div class="form-box">
+            <h3>Offer a Skill</h3>
+            <input type="text" id="userName" placeholder="Your Name">
+            <input type="text" id="skillOffered" placeholder="I can teach... (e.g., Python)">
+            <input type="text" id="skillWanted" placeholder="I want to learn... (e.g., Spanish)">
+            
+            <div class="phone-input-group">
+                <select id="countryCode">
+                    <option value="+91">🇮🇳 +91 (India)</option>
+                    <option value="+1">🇺🇸 +1 (US/Canada)</option>
+                    <option value="+44">🇬🇧 +44 (UK)</option>
+                    <option value="+61">🇦🇺 +61 (Australia)</option>
+                    <option value="+971">🇦🇪 +971 (UAE)</option>
+                </select>
+                <input type="text" id="whatsappNumber" placeholder="WhatsApp Number">
+            </div>
+            
+            <button class="add-btn" onclick="addSkill()">Add to Swap Board</button>
+        </div>
+
+        <h3>Available Swaps</h3>
+        <input type="text" id="searchInput" placeholder="🔍 Search for a skill you want to learn...">
+        
+        <ul id="skillList">
+            </ul>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
